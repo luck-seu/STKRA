@@ -1,0 +1,58 @@
+# --------- General Configs ---------
+GENERAL:
+  runner: 'LTSFRunner'
+  task_name: 'LTSF'
+  batch_size: 32
+  max_epochs: 10
+  early_stop_patience: 5
+
+
+# --------- Data Configs ---------
+DATA:
+  in_steps: 12
+  out_steps: 12
+  x_time_of_day: True
+  x_day_of_week: True
+  y_time_of_day: True
+  y_day_of_week: True
+  H: 10
+  W: 10
+
+
+# --------- Training Configs ---------
+# TODO: Support more loss functions
+OPTIM:
+  loss: 'MSE'
+  initial_lr: 0.001
+  weight_decay: 0.001
+  lr_scheduler_type: 'ExponentialLR'
+  lr_scheduler_gamma: 0.5
+  clip_grad: 5.0
+  alpha: 0.6
+  beta: 0.8
+  loss_res : 1
+  loss_contrast: 0.01
+
+
+# --------- Model Configs ---------
+# TODO: Add ablation settings.
+MODEL_PARAM_STAE:
+  history_seq_len: 12
+  future_seq_len: 12
+  num_channels: 307
+  r_s: 16
+  r_t: 16
+  e_layers: 2
+  nhead: 8
+  dim_feedforward: 2048
+  num_layers: 3
+  time_interval: 10
+  input_dim: 1
+  output_dim: 1
+  input_embedding_dim: 48
+  tod_embedding_dim: 48
+  dow_embedding_dim: 48
+  spatial_embedding_dim: 32
+  adaptive_embedding_dim: 80
+  use_mixed_proj: True
+  dropout: 0.1
